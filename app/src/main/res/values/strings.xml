@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">KioskLock</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="wifi_logo">wifi_logo</string>
+    <string name="logo">logo</string>
+    <string name="wi_fi">Wi-Fi</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="connected">Connected</string>
+    <string name="location">Location</string>
+    <string name="mobile_data">Mobile Data</string>
+    <string name="enabled">Enabled</string>
+</resources>
