@@ -9,4 +9,5 @@
     <string name="location">Location</string>
     <string name="mobile_data">Mobile Data</string>
     <string name="enabled">Enabled</string>
+    <string name="home">Home</string>
 </resources>

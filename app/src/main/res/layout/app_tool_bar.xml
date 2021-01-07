@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?attr/actionBarSize"
-    android:background="@color/primary_grey"
+    android:background="@drawable/toolbar_gradient"
     local:theme="@style/Theme.MaterialComponents.CompactMenu"
     local:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
-
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/sagoss_logo_small"
-            android:contentDescription="logo" />
+            android:contentDescription="@string/logo" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Home"
+            android:text="@string/home"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:layout_marginStart="5dp"/>
     </LinearLayout>
-
-
 
 </androidx.appcompat.widget.Toolbar>
 

@@ -4,12 +4,15 @@ package com.sagoss.kiosklock
  * @author Muhammad Abdul Salam
  */
 
+import android.annotation.TargetApi
+import android.app.Activity
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import android.provider.Settings
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.sagoss.kiosklock.fragments.HomeFragment
 import com.sagoss.kiosklock.fragments.SettingsFragment
@@ -26,9 +29,18 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = ""
-
+        setStatusBarGradiant(this)
         setFragment(AppFragments.HOME)
 
+    }
+
+    fun setStatusBarGradiant(activity: Activity) {
+        val window = activity.window
+        val background =
+            this.resources.getDrawable(R.drawable.toolbar_gradient)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = Color.TRANSPARENT
+        window.setBackgroundDrawable(background)
     }
 
     /**
