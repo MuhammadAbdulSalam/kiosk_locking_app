@@ -10,4 +10,12 @@
     <string name="mobile_data">Mobile Data</string>
     <string name="enabled">Enabled</string>
     <string name="home">Home</string>
+    <string name="internet_ok_message">Internet is currently connected. To disable or change your internet connection, please unlock the phone and go to Settings and modify Internet Settings</string>
+    <string name="internet_no_msg">Internet is currently not active, Please go to Unlock phone and go to Settings and connect to internet. Internet Connection is needed to start Patrolla</string>
+    <string name="bluetooth_ok_message">Bluetooth is currently connected. To disable or change your bluetooth connection, please unlock the phone and go to Settings and modify Bluetooth Settings</string>
+    <string name="bluetooth_no_msg">Bluetooth is currently not active, Please go to Unlock phone and go to Settings and connect to bluetooth. Bluetooth is needed in order to connect printer to Patrolla</string>
+    <string name="location_ok_message">Location Service is currently enabled. To disable or change your location service settings, please unlock the phone and go to Settings and modify Location Settings</string>
+    <string name="location_no_msg">Location is currently not active, Please go to Unlock phone and go to Settings and enable location service. Location Service is needed in order to start Patrolla</string>
+    <string name="loc_now">Lock Now</string>
+    <string name="unlock">Unlock</string>
 </resources>

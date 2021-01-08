@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = ""
         setStatusBarGradiant(this)
         setFragment(AppFragments.HOME)
-
     }
 
     fun setStatusBarGradiant(activity: Activity) {
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
             when (fragment) {
                 AppFragments.HOME -> {
-                    val homeFragment = HomeFragment(this)
+                    val homeFragment = HomeFragment(this, this)
                     transaction.replace(fragmentId, homeFragment, AppFragments.HOME.name)
                 }
                 AppFragments.SETTINGS -> {

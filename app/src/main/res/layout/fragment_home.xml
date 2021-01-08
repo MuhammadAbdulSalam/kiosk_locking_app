@@ -5,58 +5,165 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="@dimen/small_padding"
     tools:context=".fragments.HomeFragment">
 
-    <include layout="@layout/layout_status_bar"/>
+    <include
+        android:id="@+id/layout_status"
+        layout="@layout/layout_status_bar" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:layout_below="@id/layout_status"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/medium_padding"
+        android:background="@drawable/status_bar_border"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="8dp">
+
+        <FrameLayout
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/rounded_shape_enabled"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="4dp"
+            android:visibility="visible">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/logo"
+                android:src="@drawable/ic_outline_settings_24" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Settings"
+            android:textColor="@color/white"
+            android:textSize="@dimen/status_bar_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            >
+            android:layout_gravity="center_horizontal">
+
             <ImageView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:src="@drawable/patrolla"
-                android:contentDescription="@string/logo" />
+                android:layout_width="@dimen/center_button_image_dimen"
+                android:layout_height="@dimen/center_button_image_dimen"
+                android:contentDescription="@string/logo"
+                android:src="@drawable/patrolla" />
+
             <ImageView
                 android:id="@+id/img_sagoss_ring"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="@dimen/center_button_image_dimen"
+                android:layout_height="@dimen/center_button_image_dimen"
+                android:contentDescription="@string/logo"
                 android:scaleType="centerCrop"
-                android:src="@drawable/sagoss_ring"
-                android:contentDescription="@string/logo" />
+                android:src="@drawable/sagoss_ring" />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="5dp"
-            >
+            android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_outline_info_24"/>
+                android:src="@drawable/ic_outline_info_24" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tap icon to start Patrolla"
-                android:textSize="14sp" />
+                android:textSize="16sp"
+                android:textStyle="italic"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/medium_padding"
+            android:layout_centerHorizontal="true"
+            >
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_unlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:text="Unlock"
+                android:textSize="25sp"
+                android:drawableStart="@drawable/ic_outline_info_24"
+                app:icon="@drawable/ic_outline_lock_24"
+                app:iconTint="@color/sagoss_purple"
+                app:iconSize="40dp"
+                android:layout_centerHorizontal="true"
+                />
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginHorizontal="@dimen/medium_padding"-->
+<!--                android:background="@drawable/status_bar_border"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:paddingHorizontal="10dp"-->
+<!--                android:paddingVertical="8dp"-->
+<!--                android:gravity="center_horizontal">-->
 
+<!--                <FrameLayout-->
+<!--                    android:layout_width="30dp"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_marginEnd="5dp"-->
+<!--                    android:background="@drawable/rounded_shape_enabled"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:foreground="?android:attr/selectableItemBackground"-->
+<!--                    android:padding="4dp"-->
+<!--                    android:visibility="visible">-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="22dp"-->
+<!--                        android:layout_height="22dp"-->
+<!--                        android:contentDescription="@string/logo"-->
+<!--                        android:src="@drawable/ic_outline_lock_24" />-->
+<!--                </FrameLayout>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:text="Unlock Phone"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="18sp" />-->
+<!--            </LinearLayout>-->
+<!--            <Button-->
+<!--                android:layout_width="300dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:paddingHorizontal="@dimen/medium_padding"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:background="@drawable/default_button" />-->
+        </RelativeLayout>
 
 
 </RelativeLayout>

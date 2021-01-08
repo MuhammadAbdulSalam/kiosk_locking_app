@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="center_button_image_dimen">150dp</dimen>
+    <dimen name="small_padding">10dp</dimen>
+    <dimen name="medium_padding">15dp</dimen>
+    <dimen name="medium_large_padding">20dp</dimen>
+    <dimen name="status_bar_text_size">12sp</dimen>
+
+</resources>
