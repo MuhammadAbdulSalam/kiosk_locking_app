@@ -1,13 +1,17 @@
 package com.sagoss.kiosklock.utils
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.content.Context
+import android.graphics.Color
 import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.Build
 import android.provider.Settings
+import android.view.WindowManager
+import com.sagoss.kiosklock.R
 
 
 class Utility(context: Context) {
@@ -45,5 +49,15 @@ class Utility(context: Context) {
             mode != Settings.Secure.LOCATION_MODE_OFF
         }
     }
+
+    fun setStatusBarGradient(activity: Activity) {
+        val window = activity.window
+        val background =
+            activity.resources.getDrawable(R.drawable.toolbar_gradient)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = Color.TRANSPARENT
+        window.setBackgroundDrawable(background)
+    }
+
 
 }

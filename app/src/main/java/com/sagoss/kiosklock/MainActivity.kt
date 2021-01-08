@@ -4,24 +4,24 @@ package com.sagoss.kiosklock
  * @author Muhammad Abdul Salam
  */
 
-import android.annotation.TargetApi
-import android.app.Activity
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sagoss.kiosklock.fragments.HomeFragment
-import com.sagoss.kiosklock.fragments.SettingsFragment
+import com.sagoss.kiosklock.fragments.NewUserFragment
+import com.sagoss.kiosklock.utils.SharedPrefManager
+import com.sagoss.kiosklock.utils.Utility
 
 
 class MainActivity : AppCompatActivity() {
 
-    enum class AppFragments { HOME, SETTINGS, WIFI }
+    enum class AppFragments { HOME, NEW_USER }
     private val fragmentId: Int = R.id.fragment_layout
+    private val utility = Utility(this)
+    private lateinit var sharedPrefManager : SharedPrefManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,23 +30,25 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         supportActionBar?.title = ""
-        setStatusBarGradiant(this)
-        setFragment(AppFragments.HOME)
-    }
+        utility.setStatusBarGradient(this)
 
-    fun setStatusBarGradiant(activity: Activity) {
-        val window = activity.window
-        val background =
-            this.resources.getDrawable(R.drawable.toolbar_gradient)
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = Color.TRANSPARENT
-        window.setBackgroundDrawable(background)
+        sharedPrefManager = SharedPrefManager(this)
+        if(sharedPrefManager.getIsFirstUse())
+        {
+            setFragment(AppFragments.NEW_USER)
+        }
+        else
+        {
+            setFragment(AppFragments.HOME)
+        }
+
+
     }
 
     /**
      * @param fragment: Fragmemnt name that needs to be updated
      */
-    private fun setFragment(fragment: AppFragments) {
+     fun setFragment(fragment: AppFragments) {
         runOnUiThread {
             val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
             val fragmentCheck: Fragment? = supportFragmentManager.findFragmentByTag(fragment.name)
@@ -56,10 +58,10 @@ class MainActivity : AppCompatActivity() {
                     val homeFragment = HomeFragment(this, this)
                     transaction.replace(fragmentId, homeFragment, AppFragments.HOME.name)
                 }
-                AppFragments.SETTINGS -> {
-                    val settingsFragment: SettingsFragment = SettingsFragment()
+                AppFragments.NEW_USER -> {
+                    val settingsFragment = NewUserFragment(this)
                     if (fragmentCheck == null || !fragmentCheck.isVisible) {
-                        transaction.replace(fragmentId, settingsFragment, AppFragments.SETTINGS.name)
+                        transaction.replace(fragmentId, settingsFragment, AppFragments.NEW_USER.name)
                     }
                 }
                 else -> {} //TODO
@@ -69,6 +71,9 @@ class MainActivity : AppCompatActivity() {
             }
             transaction.commit()
         }
+    }
+
+    override fun onBackPressed() {
     }
 
 }

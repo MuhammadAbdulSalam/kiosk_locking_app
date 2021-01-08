@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AdminSecurityTypeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_outline_info_24" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/medium_large_padding"
+                android:text="Please select how would you like to unlock the device as default" />
+        </LinearLayout>
+
+       <com.google.android.material.button.MaterialButton
+           android:layout_width="300dp"
+           android:layout_height="60dp"
+           android:text="use password"
+           style="@style/Widget.MaterialComponents.Button.TextButton"
+           android:drawableEnd="@drawable/ic_baseline_grain_24"
+           android:backgroundTint="@color/light_grey"
+           android:layout_gravity="center_horizontal"
+           />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="use pattern"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:drawableEnd="@drawable/ic_baseline_pattren_inner_24"
+            android:backgroundTint="@color/light_grey"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="use fingerprint"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:drawableEnd="@drawable/ic_baseline_fingerprint_24"
+            android:backgroundTint="@color/light_grey"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_security_type_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+        android:layout_marginRight="@dimen/bottom_button_bottom_margin"
+        android:drawableLeft="@drawable/ic_baseline_arrow_back_24"
+        />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_security_type_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/bottom_button_bottom_margin"
+        android:layout_marginRight="@dimen/bottom_button_bottom_margin"
+        android:drawableEnd="@drawable/ic_round_arrow_forward_24"
+        />
+
+
+
+
+</RelativeLayout>

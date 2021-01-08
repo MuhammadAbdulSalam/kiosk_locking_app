@@ -139,7 +139,7 @@ class HomeFragment(context: Context, mainActivity: AppCompatActivity) : Fragment
     override fun onResume() {
         super.onResume()
         startUiUpdateThread()
-        if(!imgPatrollaRing.animation.isInitialized) imgPatrollaRing.startAnimation(startLogoAnimation())
+        if(imgPatrollaRing.animation == null) imgPatrollaRing.startAnimation(startLogoAnimation())
     }
 
 
@@ -223,6 +223,7 @@ class HomeFragment(context: Context, mainActivity: AppCompatActivity) : Fragment
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_info)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent);
 
         val tvMessage = dialog.findViewById(R.id.tv_msg) as TextView
         val btnPositive = dialog.findViewById(R.id.btn_positive) as MaterialButton
