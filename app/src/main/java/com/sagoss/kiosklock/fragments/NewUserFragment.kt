@@ -1,5 +1,6 @@
 package com.sagoss.kiosklock.fragments
 
+import android.hardware.biometrics.BiometricPrompt
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,8 +31,8 @@ class NewUserFragment(activity: AppCompatActivity) : Fragment() {
         val viewPagerAdapter = ViewPagerAdapter(mActivity.supportFragmentManager)
 
         viewPagerAdapter.addFragment(AdminPasswordFragment())
-        viewPagerAdapter.addFragment(AdminSecurityTypeFragment())
-        viewPagerAdapter.addFragment(AdminPasscodeFragment(mActivity))
+        viewPagerAdapter.addFragment(AdminSecurityTypeFragment(mActivity))
+        viewPagerAdapter.addFragment(AdminPatternFragment(mActivity))
 
         viewpager.setSwipeable(false)
         viewpager.adapter = viewPagerAdapter

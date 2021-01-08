@@ -30,6 +30,7 @@
         </LinearLayout>
 
        <com.google.android.material.button.MaterialButton
+           android:id="@+id/btn_use_password"
            android:layout_width="300dp"
            android:layout_height="60dp"
            android:text="use password"
@@ -40,6 +41,7 @@
            />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_use_pattern"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:text="use pattern"
@@ -49,15 +51,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:text="use fingerprint"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:drawableEnd="@drawable/ic_baseline_fingerprint_24"
-            android:backgroundTint="@color/light_grey"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 

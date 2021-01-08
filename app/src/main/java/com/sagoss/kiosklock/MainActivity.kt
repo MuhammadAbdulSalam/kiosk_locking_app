@@ -4,9 +4,12 @@ package com.sagoss.kiosklock
  * @author Muhammad Abdul Salam
  */
 
+import android.app.KeyguardManager
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sagoss.kiosklock.fragments.HomeFragment

@@ -18,7 +18,7 @@ import com.sagoss.kiosklock.utils.RuntimeDataHelper
 import com.sagoss.kiosklock.utils.SharedPrefManager
 
 
-class AdminPasscodeFragment(activity: AppCompatActivity) : Fragment() {
+class AdminPatternFragment(activity: AppCompatActivity) : Fragment() {
 
     val mActivity = activity
     lateinit var patternLockView: PatternLockView
@@ -28,6 +28,7 @@ class AdminPasscodeFragment(activity: AppCompatActivity) : Fragment() {
     lateinit var tvTitleText: TextView
     private lateinit var btnStartAgain: MaterialButton
     lateinit var btnNext: MaterialButton
+    lateinit var btnBack: MaterialButton
 
     var entryCount = 0
     var selectedPattern = ""
@@ -39,11 +40,12 @@ class AdminPasscodeFragment(activity: AppCompatActivity) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.fragment_admin_passcode, container, false)
+        val view = inflater.inflate(R.layout.fragment_admin_pattern, container, false)
         tvTitleText = view.findViewById(R.id.tv_pattren_title)
         btnStartAgain = view.findViewById(R.id.btn_passcode_try_again)
         btnNext = view.findViewById(R.id.btn_pattren_next)
         patternLockView = view.findViewById(R.id.plv_lockView)
+        btnBack = view.findViewById(R.id.btn_admin_pattern_back)
         sharedPrefManager = SharedPrefManager(mActivity)
 
         patternLockView.addPatternLockListener(patternLockListener())
@@ -64,8 +66,12 @@ class AdminPasscodeFragment(activity: AppCompatActivity) : Fragment() {
                 sharedPrefManager.setLockType(RuntimeDataHelper.TYPE_PATTERN)
                 (context as MainActivity).setFragment(MainActivity.AppFragments.HOME)
             }
+
         }
 
+        btnBack.setOnClickListener{
+            navigationHelper.navigatePage(NavigationHelper.BACKWARD)
+        }
 
         return view
     }

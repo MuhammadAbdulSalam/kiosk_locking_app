@@ -3,11 +3,10 @@ package com.sagoss.kiosklock.fragments
 import android.app.Dialog
 import android.bluetooth.BluetoothAdapter
 import android.content.Context
+import android.opengl.Visibility
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.Window
+import android.util.Log
+import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
@@ -18,7 +17,6 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.button.MaterialButton
 import com.sagoss.kiosklock.R
 import com.sagoss.kiosklock.utils.Utility
-import java.lang.Exception
 
 
 class HomeFragment(context: Context, mainActivity: AppCompatActivity) : Fragment() {
@@ -174,7 +172,7 @@ class HomeFragment(context: Context, mainActivity: AppCompatActivity) : Fragment
         if(isConnected)
         {
             dialog.show()
-            showDialog(positiveMessage, false, onPositiveClickListner, onSecondaryClickListner)
+            showInfoDialog(positiveMessage, false, onPositiveClickListner, onSecondaryClickListner)
         }
         else{
             dialog.show()
@@ -182,7 +180,7 @@ class HomeFragment(context: Context, mainActivity: AppCompatActivity) : Fragment
                 //TODO add unlocking
                 dialog.cancel()
             }
-            showDialog(negativeMessage, true, onPositiveClickListner, onSecondaryClickListner)
+            showInfoDialog(negativeMessage, true, onPositiveClickListner, onSecondaryClickListner)
         }
 
     }
@@ -201,29 +199,55 @@ class HomeFragment(context: Context, mainActivity: AppCompatActivity) : Fragment
      * Handle Locking and Unlocking
      */
     private fun handleLock(){
-        if (isLocked) {
-            btnUnlock.setIconResource(R.drawable.ic_baseline_lock_open_24)
-            btnUnlock.setIconTintResource(R.color.sagoss_green)
-            btnUnlock.text = getString(R.string.loc_now)
-            isLocked = false
-        } else {
-            btnUnlock.setIconResource(R.drawable.ic_outline_lock_24)
-            btnUnlock.setIconTintResource(R.color.sagoss_purple)
-            btnUnlock.text = getString(R.string.unlock)
+        btnUnlock.visibility = View.INVISIBLE
+        dialog = Dialog(mContext)
+        enterPasswordDialog()
+        dialog.show()
 
-            isLocked = true
+        dialog.setOnDismissListener{
+            btnUnlock.visibility = View.VISIBLE
+        }
+//        if (isLocked) {
+//            btnUnlock.setIconResource(R.drawable.ic_baseline_lock_open_24)
+//            btnUnlock.setIconTintResource(R.color.sagoss_green)
+//            btnUnlock.text = getString(R.string.loc_now)
+//            isLocked = false
+//        } else {
+//            btnUnlock.setIconResource(R.drawable.ic_outline_lock_24)
+//            btnUnlock.setIconTintResource(R.color.sagoss_purple)
+//            btnUnlock.text = getString(R.string.unlock)
+//
+//            isLocked = true
+//        }
+    }
+
+    private fun enterPasswordDialog(){
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.dialog_pattern)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.window?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, 900)
+        val window: Window? = dialog.window
+        val windowLayout = window?.attributes
+
+        windowLayout?.gravity = Gravity.BOTTOM
+        windowLayout?.flags = windowLayout?.flags?.and(WindowManager.LayoutParams.FLAG_DIM_BEHIND.inv())
+        window?.attributes = windowLayout
+
+        dialog.findViewById<MaterialButton>(R.id.btn_forgot_pattern).setOnClickListener{
+            dialog.dismiss()
         }
     }
+
 
     /**
      * Info Dialog with 1 or 2 buttons and selected message
      */
-    private fun showDialog(msg: String, isSecondaryNeeded: Boolean ,onPositiveClickListner: View.OnClickListener, onSecondaryListner: View.OnClickListener? ) {
-
+    private fun showInfoDialog(msg: String, isSecondaryNeeded: Boolean ,onPositiveClickListner: View.OnClickListener, onSecondaryListner: View.OnClickListener? ) {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setCancelable(false)
         dialog.setContentView(R.layout.dialog_info)
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val tvMessage = dialog.findViewById(R.id.tv_msg) as TextView
         val btnPositive = dialog.findViewById(R.id.btn_positive) as MaterialButton
