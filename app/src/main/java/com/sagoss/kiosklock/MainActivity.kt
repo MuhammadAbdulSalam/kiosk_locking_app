@@ -4,12 +4,10 @@ package com.sagoss.kiosklock
  * @author Muhammad Abdul Salam
  */
 
-import android.app.KeyguardManager
-import android.content.Context
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.sagoss.kiosklock.fragments.HomeFragment
@@ -36,16 +34,11 @@ class MainActivity : AppCompatActivity() {
         utility.setStatusBarGradient(this)
 
         sharedPrefManager = SharedPrefManager(this)
-        if(sharedPrefManager.getIsFirstUse())
-        {
-            setFragment(AppFragments.NEW_USER)
-        }
-        else
-        {
-            setFragment(AppFragments.HOME)
-        }
 
-
+        when{
+            sharedPrefManager.getIsFirstUse()-> setFragment(AppFragments.NEW_USER)
+            else -> setFragment(AppFragments.HOME)
+        }
     }
 
     /**

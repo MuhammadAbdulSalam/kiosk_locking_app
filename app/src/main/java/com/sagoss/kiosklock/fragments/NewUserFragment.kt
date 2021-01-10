@@ -13,9 +13,7 @@ import com.sagoss.kiosklock.custompager.CustomViewPager
 import com.sagoss.kiosklock.custompager.ViewPagerAdapter
 import com.sagoss.kiosklock.utils.RuntimeDataHelper
 
-class NewUserFragment(activity: AppCompatActivity) : Fragment() {
-
-    private val mActivity = activity
+class NewUserFragment(private val mActivity: AppCompatActivity) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +28,7 @@ class NewUserFragment(activity: AppCompatActivity) : Fragment() {
 
         val viewPagerAdapter = ViewPagerAdapter(mActivity.supportFragmentManager)
 
-        viewPagerAdapter.addFragment(AdminPasswordFragment())
+        viewPagerAdapter.addFragment(AdminPasswordFragment(mActivity))
         viewPagerAdapter.addFragment(AdminSecurityTypeFragment(mActivity))
         viewPagerAdapter.addFragment(AdminPatternFragment(mActivity))
 

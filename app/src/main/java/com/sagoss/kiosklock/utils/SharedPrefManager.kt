@@ -15,6 +15,9 @@ class SharedPrefManager(activity: AppCompatActivity) {
     private val IS_FIRST_USE = "is_first_use"
     private val PATTERN = "pattren"
     private val LOCK_TYPE = "lock_type"
+    private val MEMORABLE_WORD = "memorable_word"
+    private val IS_ADMIN = "is_admin"
+
 
     /**
      * @param password: save password
@@ -32,6 +35,21 @@ class SharedPrefManager(activity: AppCompatActivity) {
     }
 
     /**
+     * @param memorableWord: save memorable word
+     */
+    fun setMemorableWord(memorableWord: String){
+        editor.putString(MEMORABLE_WORD, memorableWord)
+        editor.commit()
+    }
+
+    /**
+     * @return stored memorableWord
+     */
+    fun getMemorableWord(): String{
+        return pref.getString(MEMORABLE_WORD, "default").toString()
+    }
+
+    /**
      * @param lockStatus: true or false current locked status
      */
     fun setLockStatus(lockStatus: Boolean){
@@ -43,7 +61,7 @@ class SharedPrefManager(activity: AppCompatActivity) {
      * @return lock status
      */
     fun getLockStatus(): Boolean{
-        return pref.getBoolean(LOCK_STATUS, true)
+        return pref.getBoolean(LOCK_STATUS, false)
     }
 
     /**
@@ -92,7 +110,20 @@ class SharedPrefManager(activity: AppCompatActivity) {
         return pref.getString(PATTERN, "default").toString()
     }
 
+    /**
+     * @param isAdmin: if device is set as admin
+     */
+    fun setIsDeviceAdmin(isAdmin: Boolean){
+        editor.putBoolean(IS_ADMIN, isAdmin)
+        editor.commit()
+    }
 
+    /**
+     * @return current saved pattren
+     */
+    fun getIsAdmin(): Boolean{
+        return pref.getBoolean(IS_ADMIN, false)
+    }
 
 
 

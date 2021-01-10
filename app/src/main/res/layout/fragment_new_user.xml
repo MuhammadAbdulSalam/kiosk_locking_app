@@ -15,18 +15,17 @@
         tools:ignore="UseCompoundDrawables"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/medium_padding">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_baseline_admin_panel_settings_24"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Setup Guid"
+            android:text="Setup Admin Credentials"
             android:layout_gravity="bottom"
-            android:textSize="25sp"/>
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="5dp"
-            android:src="@drawable/ic_baseline_android_24"/>
+            android:textSize="20sp"/>
     </LinearLayout>
 
 

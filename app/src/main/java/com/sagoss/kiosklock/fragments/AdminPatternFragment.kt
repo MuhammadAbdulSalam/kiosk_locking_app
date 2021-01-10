@@ -64,6 +64,7 @@ class AdminPatternFragment(activity: AppCompatActivity) : Fragment() {
             {
                 sharedPrefManager.setPatternLock(confirmPattern)
                 sharedPrefManager.setLockType(RuntimeDataHelper.TYPE_PATTERN)
+                sharedPrefManager.setIsFirstUse(false)
                 (context as MainActivity).setFragment(MainActivity.AppFragments.HOME)
             }
 

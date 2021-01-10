@@ -54,18 +54,21 @@ class AdminSecurityTypeFragment(activity: AppCompatActivity) : Fragment() {
 
         view.findViewById<MaterialButton>(R.id.btn_security_type_next).setOnClickListener()
         {
-            if(isPassword && !isPattern)
-            {
-                sharedPrefManager.setLockType(RuntimeDataHelper.TYPE_PASSWORD)
-                (context as MainActivity).setFragment(MainActivity.AppFragments.HOME)
-            }
-            else if(!isPassword && isPattern)
-            {
-                navigationHelper.navigatePage(NavigationHelper.FORWARD)
-            }
-            else
-            {
-                Toast.makeText(mActivity, "Please select one of the options on screen to continue", Toast.LENGTH_LONG).show()
+
+            when{
+                isPassword && !isPattern ->
+                {
+                    sharedPrefManager.setLockType(RuntimeDataHelper.TYPE_PASSWORD)
+                    sharedPrefManager.setIsFirstUse(false)
+                    (context as MainActivity).setFragment(MainActivity.AppFragments.HOME)
+                }
+                !isPassword && isPattern ->
+                {
+                    sharedPrefManager.setLockType(RuntimeDataHelper.TYPE_PATTERN)
+                    navigationHelper.navigatePage(NavigationHelper.FORWARD)
+                }
+                else -> Toast.makeText(mActivity, "Please select one of the options on screen to continue", Toast.LENGTH_LONG).show()
+
             }
         }
 

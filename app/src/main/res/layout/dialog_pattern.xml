@@ -3,9 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="450dp"
+    android:layout_height="wrap_content"
     >
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" Please enter Pattern Pin"
-            app:drawableStartCompat="@drawable/ic_outline_info_24" />
+             />
 
         <com.andrognito.patternlockview.PatternLockView
             android:id="@+id/ptl_enter_pattern"
@@ -24,17 +23,36 @@
             android:layout_height="300dp"
             android:layout_marginTop="10dp"
             android:background="@color/primary_grey"/>
-       <com.google.android.material.button.MaterialButton
-           android:id="@+id/btn_forgot_pattern"
-           android:layout_width="wrap_content"
-           android:layout_height="40dp"
-           android:textSize="14sp"
-           android:text="Forgot Pattern?"
-           style="@style/Widget.MaterialComponents.Button.TextButton"
-           android:layout_gravity="right"
-           android:textAllCaps="false"
-           android:textColor="@color/sagoss_blue"
-           android:layout_marginEnd="@dimen/medium_large_padding"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_forgot_pattern"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="14sp"
+                android:text="Forgot Pattern?"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_gravity="right"
+                android:textAllCaps="false"
+                android:textColor="@color/sagoss_blue"
+                android:drawableLeft="@drawable/ic_baseline_info_24_fill"
+                android:layout_marginEnd="@dimen/medium_large_padding"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="14sp"
+                android:text="cancel"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@drawable/ic_baseline_cancel_24"
+                android:textAllCaps="false"
+                android:textColor="@color/sagoss_blue"
+                android:layout_marginEnd="@dimen/medium_large_padding"/>
+        </RelativeLayout>
+
 
     </LinearLayout>
 
