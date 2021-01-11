@@ -3,12 +3,14 @@ package com.sagoss.kiosklock.fragments
 import android.app.Dialog
 import android.bluetooth.BluetoothAdapter
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -21,8 +23,6 @@ import com.sagoss.kiosklock.locking.LockManager
 import com.sagoss.kiosklock.utils.RuntimeDataHelper
 import com.sagoss.kiosklock.utils.SharedPrefManager
 import com.sagoss.kiosklock.utils.Utility
-import java.io.BufferedReader
-import java.io.InputStreamReader
 
 
 class HomeFragment(private val mContext: Context, private val mMainActivity: AppCompatActivity) :
@@ -97,15 +97,20 @@ class HomeFragment(private val mContext: Context, private val mMainActivity: App
             )
         }
 
-
         if(!sharedPrefManager.getIsAdmin())
         {
-            Runtime.getRuntime().exec("dpm set-device-owner com.sagoss.kiosklock/locking.DeviceAdminReceiver")
+           // Runtime.getRuntime().exec("dpm set-device-owner com.sagoss.kiosklock/locking.DeviceAdminReceiver")
 
 //            lockManager.enableLock(true)
 //            sharedPrefManager.setIsDeviceAdmin(true)
         }
 
+        view.findViewById<LinearLayout>(R.id.btn_start_patrolla).setOnClickListener{
+            val i: Intent? =
+                mMainActivity.packageManager.getLaunchIntentForPackage("com.sagoss.patrolla")
+            mMainActivity.startActivity(i)
+
+        }
 
 
         return view

@@ -34,7 +34,6 @@ class LockManager(private val mActivity: AppCompatActivity) {
 
     private var mAdminComponentName: ComponentName? = null
     private lateinit var mDevicePolicyManager: DevicePolicyManager
-
     /**
      * Initialise and check for locking authority
      *
